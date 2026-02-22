@@ -1,0 +1,36 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+html,body,#root{
+  height: 100%;
+  width: 100%;
+}
+
+html{
+  background-color: black;
+  font-family: sans-serif;
+}
+
+.notes{
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.note{
+  background-color: rgb(50, 50, 50);
+  color: white;
+  max-width: 20rem;
+  border-radius: 0.7rem;
+  padding: 1rem 2rem;
+}
+
+.note-form{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
