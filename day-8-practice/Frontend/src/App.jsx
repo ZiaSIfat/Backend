@@ -37,6 +37,18 @@ function App() {
     })
   }
 
+  function handleModify(noteId){
+    const input = document.getElementById(`input-${noteId}`)
+    const updatedDescription = input.value
+
+    axios.patch('https://backend-8viy.onrender.com/api/notes/'+noteId,{description: updatedDescription})
+    .then(res=>{
+      console.log(res.data)
+      input.value = ''
+      fetchNotes()
+    })
+  }
+
   useEffect(()=>{
     fetchNotes()
   },[])
@@ -50,6 +62,7 @@ function App() {
       <input name='description' type="text" placeholder='Enter Description'/>
       <button>Create Note</button>
     </form>
+    
       <div className="notes">
         {
           notes.map(note=>{
@@ -57,6 +70,10 @@ function App() {
           <h1>{note.title}</h1>
           <p>{note.description}</p>
           <button onClick={()=>{handleDelete(note._id)}}>Delete</button>
+          <div>
+            <input id={`input-${note._id}`} name='modify' type="text" placeholder='Modify Description'/>
+            <button onClick={()=>{handleModify(note._id)}}>Modify</button>
+          </div>
         </div>
           })
         }
